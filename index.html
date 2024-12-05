@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Loop Image</title>
+</head>
+<body>
+
+    <h1>Welcome to the Image Download Page</h1>
+    <p>The image will keep downloading in a loop until you leave the site.</p>
+
+    <script>
+        // กำหนด URL ของภาพ (แทนที่ด้วย URL ภาพจริงของคุณ)
+        const imageURL = "https://img2.pic.in.th/pic/pixil-frame-0.png"; // URL ของภาพ
+
+        // ฟังก์ชันเริ่มดาวน์โหลดภาพในลูป
+        function startDownloadLoop() {
+            // สร้างลิงก์เพื่อทำการดาวน์โหลด
+            const link = document.createElement("a");
+            link.href = imageURL;
+            link.download = "gg.png"; // ชื่อไฟล์ที่ผู้ใช้จะดาวน์โหลด
+
+            // จำลองการคลิกลิงก์ดาวน์โหลด
+            link.click();
+        }
+
+        // เริ่มต้นลูปเมื่อหน้าเว็บโหลด
+        setInterval(startDownloadLoop, 2000); // ปรับเวลาในการทำงาน (เป็นมิลลิวินาที) ได้ตามต้องการ
+
+        // ตัวเลือก: หยุดลูปถ้าผู้ใช้ออกจากหน้าเว็บ
+        window.onbeforeunload = function() {
+            return "Are you sure you want to leave? The image downloads will stop.";
+            // แปล: คุณแน่ใจหรือไม่ว่าต้องการออกจากเว็บไซต์? การดาวน์โหลดภาพจะหยุด
+        };
+    </script>
+
+</body>
+</html>
